@@ -26,10 +26,15 @@ selectedAnswers.add(ans);
 if(selectedAnswers.length==questions.length)
 {
   setState(() {
-    selectedAnswers=[];
     activeScreen='result-screen';
   });
 }
+  }
+  void restartQuiz(){
+    setState(() {
+      selectedAnswers=[];
+      activeScreen='Question-screen';
+    });
   }
   
   @override
@@ -41,7 +46,7 @@ if(selectedAnswers.length==questions.length)
    }
    if(activeScreen=='result-screen')
    {
-    screen=ResultsScreen(chosenAns: selectedAnswers,);
+    screen=ResultsScreen(chosenAns: selectedAnswers,restart: restartQuiz,);
    }
     return MaterialApp(
       home: Scaffold(
